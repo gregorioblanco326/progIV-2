@@ -19,6 +19,10 @@ class CategoryController extends Controller
             'nombre' => 'required|string|unique:categories|max:255',
             'slug' => 'required|string|unique:categories|max:255',
             'descripcion' => 'nullable|string',
+            'imagen_url' => 'nullable|url|max:255',
+            'orden' => 'integer|min:0',
+            'esta_publicada' => 'boolean',
+            'categoria_padre_id' => 'nullable|exists:categories,id',
         ]);
 
         $category = Category::create($request->all());
@@ -36,6 +40,10 @@ class CategoryController extends Controller
             'nombre' => 'string|max:255|unique:categories,nombre,' . $category->id,
             'slug' => 'string|max:255|unique:categories,slug,' . $category->id,
             'descripcion' => 'nullable|string',
+            'imagen_url' => 'nullable|url|max:255',
+            'orden' => 'integer|min:0',
+            'esta_publicada' => 'boolean',
+            'categoria_padre_id' => 'nullable|exists:categories,id',
         ]);
 
         $category->update($request->all());

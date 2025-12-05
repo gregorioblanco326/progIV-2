@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            // Relación: Un pedido pertenece a un usuario
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
             $table->decimal('monto_total', 10, 2);
